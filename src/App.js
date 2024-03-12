@@ -15,6 +15,7 @@ import {Routes , Route, Link} from 'react-router-dom' ;
 import { useNavigate } from 'react-router-dom';
 
 import Edit2 from './pages/Edit2';
+import UseEffect from './pages/UseEffect';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
 /* React Router  : anker 태그 : a href = "index.html"
     - SPA 에서 다른 화면 전환 
     - SPA : 화면의 Page 를 이동하도록 함. 
+    - 요청 (Link) ==>  ( Routes => Route path="/about"  element= {</About /> }) 
 
     - 라이브러리 설치가 필요함. : react-router : 모바일 앱 , react-router-dom ( 웹앱 )
         - npm install react-routor-dom
@@ -88,6 +90,10 @@ function App() {
             <li>
             <button onClick={()=> {navigate(-2)}}  > 이전 이전  페이지 이동 </button>
             </li>
+            <li> 
+               <button onClick={()=> {navigate("/useEffect")}}  > useEffect 호출 </button>
+            </li>
+
         </ul>
       </nav>
 
@@ -99,6 +105,7 @@ function App() {
         <Route path="/gallery" element= {<Gallery />}> </Route>
         <Route path="/edit/:id" element= {<Edit />}> </Route>
         <Route path="/edit2" element={<Edit2 />}> </Route>
+        <Route path="/useEffect" element={<UseEffect />}> </Route>
       </Routes>
 
 
