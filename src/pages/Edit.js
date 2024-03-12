@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 
 function Edit(props) {
 
-    // http://localhost:3010/edit/id 
+    // http://localhost:3010/edit/:id 
     const {id} = useParams(); 
 
     return (

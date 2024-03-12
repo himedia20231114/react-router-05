@@ -11,6 +11,11 @@ import Edit from './pages/Edit';
 // 라우팅(페이지 이동) 을 처리하는 컴포넌트를 import 
 import {Routes , Route, Link} from 'react-router-dom' ; 
 
+// useNavigate 
+import { useNavigate } from 'react-router-dom';
+
+import Edit2 from './pages/Edit2';
+
 function App() {
 
 // 라우팅 : 요청( /company )에 대해서 해당 컴포넌트(page) 를 이동  
@@ -36,15 +41,23 @@ function App() {
         - 요청 정보를 보내는 <Link to = "/about"> About </Link>
 
     // react-router-dom v6 에서 신기능 3가지
-    1. Path Variable 을 사용 할 수 있음.   "/edit/:id"  , useParams 
+    1. Path Variable 을 사용 할 수 있음.   "/edit/:id"  , useParams 에서 처러
           <Edit /> 
-    2. Query String 을 사용 할 수 있음.    "/edit?id=1&mode=abc"  , useServhParms 
+    2. Query String 을 사용 할 수 있음.    "/edit?id=1&mode=abc"  , useSearchParms  에서 처리
           <Edit2 /> 
-    3. Page Moving : 이벤트가 발생할때 특정 페이지 이동 : useNavigate 를 사용
+    3. Page Moving : 이벤트가 발생할때 특정 페이지 이동 : useNavigate 를 사용 
+          // JavaScript : location.href "index.html";   <== MPA 
+          // 라우트에게 요청을 보내는 것. ("/about")  : navigate("/about")
+          // 이전 페이로 이동 : navigate(-1)
+          // 다음 페이지로 이동 : navigate(1) 
+          // 이전 이전 페이지로 이동 : navigate(-2) 
           // 버튼을 클릭시 특정 페이지로 이동 : useNavigate 
           // 함수 내부에서 함수를 처리후 특정 페이지로 이동 : useNavigate 를 사용  
 
 */
+
+  // useNavigate Hook을 사용 할 객체 선언 : navigate 
+  const navigate = useNavigate(); 
 
   return (
     <div className="App">
@@ -58,7 +71,23 @@ function App() {
             <li> <Link to="/about"> About </Link> </li>
             <li> <Link to="/company"> Company </Link></li>
             <li> <Link to="/gallery"> Gallery </Link></li>
-            <li> <Link to="/edit/100"> Edit </Link> </li>
+            <li> <Link to="/edit/100"> Edit : Path Variable 예제  </Link> </li>
+            <li> <Link to="/edit2?id=200&mode=abc"> Edit2 : Query String 예제 `</Link></li>
+            <li>
+              <button onClick={()=> {navigate("/")}} > 홈으로 이동 </button>
+            </li>
+            <li>
+              <button onClick={()=> {navigate("/company")}}  > 회사페이지 이동 </button>
+            </li>
+            <li> 
+              <button onClick={()=> {navigate(-1)}}  > 이전 페이지 이동 </button>
+            </li>
+            <li>
+               <button onClick={()=> {navigate(1)}}  > 다음 페이지 이동 </button>
+            </li>
+            <li>
+            <button onClick={()=> {navigate(-2)}}  > 이전 이전  페이지 이동 </button>
+            </li>
         </ul>
       </nav>
 
@@ -69,6 +98,7 @@ function App() {
         <Route path="/company" element= {<Company />}> </Route>
         <Route path="/gallery" element= {<Gallery />}> </Route>
         <Route path="/edit/:id" element= {<Edit />}> </Route>
+        <Route path="/edit2" element={<Edit2 />}> </Route>
       </Routes>
 
 
