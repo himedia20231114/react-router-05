@@ -4,10 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// 모든(전체) 페이지에서 라우팅 기능을 사용 
+import { BrowserRouter } from 'react-router-dom'; 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
