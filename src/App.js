@@ -16,6 +16,8 @@ import { useNavigate } from 'react-router-dom';
 
 import Edit2 from './pages/Edit2';
 import UseEffect from './pages/UseEffect';
+import Footer from './pages/Footer';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
 
@@ -106,8 +108,10 @@ function App() {
         <Route path="/edit/:id" element= {<Edit />}> </Route>
         <Route path="/edit2" element={<Edit2 />}> </Route>
         <Route path="/useEffect" element={<UseEffect />}> </Route>
+        <Route path="*" element={<NotFoundPage />}> </Route>
       </Routes>
 
+      <Footer /> 
 
     </div>
   );
